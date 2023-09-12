@@ -33,8 +33,8 @@ function drawChoix(responses, pos) {
 let body = document.getElementById("body");
 
 let texts = {
-    loses : ["Try again", "It's not that", "Play again"],
-    wins : ["Good", "You rook!", "Congrats!"]
+    loses : ["Try again !", "It's not that !","Sorry !", "Oops !"],
+    wins : ["Good !!!", "You rook !!!", "Congrats !!!", "Yes! It's that !!"]
 }
 
 let questionsList = [
@@ -55,7 +55,7 @@ let questionsList = [
     },
     {
         pays: "France",
-        choix: ["Paris","Nice", "Marseille", "Nante"],
+        choix: ["Paris","Nice", "Marseille", "Nantes"],
         capital : "Paris"
     }
 ];
