@@ -1,3 +1,35 @@
+function clear(balise) {
+    balise.innerHTML = "";
+}
+
+function editing(balise, id, text) {
+    balise.id = id;
+    balise.textContent = text;
+}
+
+function getRandInt(max) {
+    return Math.floor(Math.random()*max);
+}
+
+function drawChoix(responses, pos) {
+    for (let i=0; i<4; ++i) {
+        let choix = document.createElement('li');
+        choix.textContent = questionsList[pos].choix[i];
+        choix.addEventListener('click', () => {
+            if (choix.textContent !== questionsList[ randInt ].capital) {
+                choix.style.background = "#FF0B37";
+                compensation.textContent = "Oopps!"
+                compensation.style.color = "#FF0B37";
+            }
+            else {
+                choix.style.background = "#01FF3B";
+                compensation.textContent = "Bienn!!";
+                compensation.style.color = "#01ff3b";
+            }
+        });
+        responses.append(choix);
+    }
+}
 let body = document.getElementById("body");
 
 let questionsList = [
@@ -23,53 +55,27 @@ let questionsList = [
     }
 ];
 
+let randInt = getRandInt(questionsList.length);
 let question = document.createElement("div");
-let responsList = document.createElement("ul");
-
-question.id = "question";
-question.textContent = "Who is the capital of ";
-
 let welcome = document.createElement("div");
-welcome.id = "welcome";
-welcome.textContent = "Welcome to the Quizz GASY";
-
+let responsList = document.createElement("ul");
 let pays = document.createElement("div");
-let randInt = Math.floor(Math.random() * questionsList.length);
-pays.id = "pays";
-pays.textContent = questionsList[ randInt ].pays + " ?";
-
 let compensation = document.createElement("div");
+let btnStart = document.createElement("div");
+let btnNext = document.createElement("div");
+
+editing(question, "question", "Who is the capital of ");
+editing(welcome, "welcome", "Welcome to the Quizz Game");
+editing(pays, "pays", questionsList[randInt].pays+ " ?");
 compensation.id = "compensation";
 
-for (let i=0; i<4; ++i) {
-    let choix = document.createElement('li');
-    choix.textContent = questionsList[ randInt ].choix[i];
-    choix.addEventListener('click', () => {
-        if (choix.textContent !== questionsList[ randInt ].capital) {
-            choix.style.background = "#FF0B37";
-            compensation.textContent = "Oopps!"
-            compensation.style.color = "#FF0B37";
-        }
-        else {
-            choix.style.background = "#01FF3B";
-            compensation.textContent = "Bienn!!";
-            compensation.style.color = "#01ff3b";
-        }
-        
-    });
-    responsList.append(choix);
-}
+drawChoix(responsList, randInt);
 
 body.append(compensation);
 
-let btnStart = document.createElement("div");
-btnStart.id = "start";
-btnStart.textContent = "Play ";
+editing(btnStart, "start", "Play");
+editing(btnNext, "next", "Next");
 
-let btnNext = document.createElement("div");
-btnNext.id = "next";
-
-btnNext.textContent = "Next";
 btnStart.addEventListener('click', () => {
     body.removeChild(btnStart);
     body.removeChild(welcome);
@@ -77,27 +83,11 @@ btnStart.addEventListener('click', () => {
 });
 
 btnNext.addEventListener('click', () => {
-    randInt = Math.floor(Math.random() * questionsList.length);
-    responsList.innerHTML = "";
-    compensation.innerHTML = "";
+    randInt = getRandInt(questionsList.length);
+    clear(responsList);
+    clear(compensation);
     pays.textContent = questionsList[ randInt ].pays + " ?";
-    for (let i=0; i<4; ++i) {
-        let choix = document.createElement('li');
-        choix.textContent = questionsList[ randInt ].choix[i];
-        choix.addEventListener('click', () => {
-            if (choix.textContent !== questionsList[ randInt ].capital) {
-                choix.style.background = "#FF0B37";
-                compensation.textContent = "Oops!";
-                compensation.style.color = "#FF0B37";
-            }
-            else {
-                choix.style.background = "#01FF3B";
-                compensation.textContent = "Bien";
-                compensation.style.color = "#01ff3b";
-            }
-        });
-        responsList.append(choix);
-    }
+    drawChoix(responsList, randInt);
 });
 
 body.append(welcome, btnStart);
