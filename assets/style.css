@@ -55,16 +55,33 @@ body {
 
 li{
     width: 100%;
-    margin: 10px;
+    margin-top: 10px;
     padding: 10px;
-    font-size: 26px;
+    font-size: 24px;
     background: #5a5aCa;
     border-radius: 4px;
     color: #000;
     text-align: center;
+    cursor: pointer;
+    border: solid 4px transparent;
 }
 
 li:hover {
-    background: #fff;
+    border-color: #fff;
     color: #000;
+}
+
+#compensation {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+#next {
+    font-size: 24px;
+    background: #434e44;
+    margin-top: 20px;
+    padding: 10px 30px;
+    color: #ebe0e0;
+    border-radius: 4px;
+    cursor: pointer;
 }

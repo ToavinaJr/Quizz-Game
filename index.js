@@ -1,10 +1,4 @@
 let body = document.getElementById("body");
-let welcome = document.createElement("div");
-let btnStart = document.createElement("div");
-let question = document.createElement("div");
-let pays = document.createElement("div");
-let responsList = document.createElement("ul");
-let btnNext = document.createElement("div");
 
 let questionsList = [
     {
@@ -28,37 +22,79 @@ let questionsList = [
         capital : "Paris"
     }
 ];
+
+let question = document.createElement("div");
+let responsList = document.createElement("ul");
+
 question.id = "question";
 question.textContent = "Who is the capital of ";
 
+let welcome = document.createElement("div");
 welcome.id = "welcome";
 welcome.textContent = "Welcome to the Quizz GASY";
 
+let pays = document.createElement("div");
 let randInt = Math.floor(Math.random() * questionsList.length);
 pays.id = "pays";
 pays.textContent = questionsList[ randInt ].pays + " ?";
 
+let compensation = document.createElement("div");
+compensation.id = "compensation";
+
 for (let i=0; i<4; ++i) {
     let choix = document.createElement('li');
     choix.textContent = questionsList[ randInt ].choix[i];
-    responsList.append(choix);
     choix.addEventListener('click', () => {
         choix.style.color = "#fff";
         if (choix.textContent !== questionsList[ randInt ].capital) {
             choix.style.background = "#FF0B37";
+            compensation.textContent = "Oops!";
         }
-        else choix.style.background = "#01FF3B"; 
+        else {
+            choix.style.background = "#01FF3B";
+            compensation.textContent = "Bien";
+        }
     });
+    responsList.append(choix);
 }
 
+body.append(compensation);
 
+let btnStart = document.createElement("div");
 btnStart.id = "start";
 btnStart.textContent = "Play ";
 
-body.append(welcome, btnStart);
+let btnNext = document.createElement("div");
+btnNext.id = "next";
 
+btnNext.textContent = "Next";
 btnStart.addEventListener('click', () => {
     body.removeChild(btnStart);
     body.removeChild(welcome);
-    body.append(question, pays, responsList);
+    body.append(question, pays, responsList, compensation, btnNext);
 });
+
+btnNext.addEventListener('click', () => {
+    randInt = Math.floor(Math.random() * questionsList.length);
+    responsList.innerHTML = "";
+    compensation.innerHTML = "";
+    pays.textContent = questionsList[ randInt ].pays + " ?";
+    for (let i=0; i<4; ++i) {
+        let choix = document.createElement('li');
+        choix.textContent = questionsList[ randInt ].choix[i];
+        choix.addEventListener('click', () => {
+            choix.style.color = "#fff";
+            if (choix.textContent !== questionsList[ randInt ].capital) {
+                choix.style.background = "#FF0B37";
+                compensation.textContent = "Oops!";
+            }
+            else {
+                choix.style.background = "#01FF3B";
+                compensation.textContent = "Bien";
+            }
+        });
+        responsList.append(choix);
+    }
+});
+
+body.append(welcome, btnStart);
