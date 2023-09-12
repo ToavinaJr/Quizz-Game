@@ -18,12 +18,12 @@ function drawChoix(responses, pos) {
         choix.addEventListener('click', () => {
             if (choix.textContent !== questionsList[ randInt ].capital) {
                 choix.style.background = "#FF0B37";
-                compensation.textContent = "Oopps!"
+                compensation.textContent = texts.loses[getRandInt(texts.loses.length)];
                 compensation.style.color = "#FF0B37";
             }
             else {
                 choix.style.background = "#01FF3B";
-                compensation.textContent = "Bienn!!";
+                compensation.textContent = texts.wins[getRandInt(texts.wins.length)];
                 compensation.style.color = "#01ff3b";
             }
         });
@@ -31,6 +31,11 @@ function drawChoix(responses, pos) {
     }
 }
 let body = document.getElementById("body");
+
+let texts = {
+    loses : ["Try again", "It's not that", "Play again"],
+    wins : ["Good", "You rook!", "Congrats!"]
+}
 
 let questionsList = [
     {
