@@ -9,7 +9,7 @@
 :root {
     --color-dark : #00001a;
     --color-yellow : #fece4a;
-    --color-blue: #5A5ACA;
+    --color-blue: #20aeff;
 }
 
 body {
@@ -24,11 +24,11 @@ body {
 
 #welcome {
     font-size: 38px;
-    color: var(--color-yellow);
+    color: #20AEFF;
 }
 
 #start {
-    background: var(--color-blue);
+    background: var(--color-yellow);
     color: var(--color-dark);
     padding: 10px 20px;
     font-size: 28px;
@@ -38,7 +38,8 @@ body {
 }
 
 #start:hover {
-    background: #20AEFF;
+    background: var(--color-blue);
+    color: #030303;
 }
 
 #question {
@@ -70,7 +71,8 @@ li{
 }
 
 li:hover {
-    border-color: #fff;
+    background: var(--color-yellow);
+    color: var(--color-dark);
 }
 
 #compensation {
@@ -79,15 +81,18 @@ li:hover {
 }
 
 #next {
+    width: 200px;
     font-size: 24px;
-    background: #59645a;
-    margin-top: 20px;
-    padding: 10px 30px;
-    color: #ebe0e0;
+    background: var(--color-yellow);
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    color: var(--color-dark);
     border-radius: 4px;
     cursor: pointer;
+    transform: translateX(12px);
 }
 
 #next:hover {
-    background: rgb(26, 190, 11);
+    background: rgb(47, 212, 5);
 }

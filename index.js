@@ -45,15 +45,17 @@ for (let i=0; i<4; ++i) {
     let choix = document.createElement('li');
     choix.textContent = questionsList[ randInt ].choix[i];
     choix.addEventListener('click', () => {
-        choix.style.color = "#fff";
         if (choix.textContent !== questionsList[ randInt ].capital) {
             choix.style.background = "#FF0B37";
-            compensation.textContent = "Oops!";
+            compensation.textContent = "Oopps!"
+            compensation.style.color = "#FF0B37";
         }
         else {
             choix.style.background = "#01FF3B";
-            compensation.textContent = "Bien";
+            compensation.textContent = "Bienn!!";
+            compensation.style.color = "#01ff3b";
         }
+        
     });
     responsList.append(choix);
 }
@@ -83,14 +85,15 @@ btnNext.addEventListener('click', () => {
         let choix = document.createElement('li');
         choix.textContent = questionsList[ randInt ].choix[i];
         choix.addEventListener('click', () => {
-            choix.style.color = "#fff";
             if (choix.textContent !== questionsList[ randInt ].capital) {
                 choix.style.background = "#FF0B37";
                 compensation.textContent = "Oops!";
+                compensation.style.color = "#FF0B37";
             }
             else {
                 choix.style.background = "#01FF3B";
                 compensation.textContent = "Bien";
+                compensation.style.color = "#01ff3b";
             }
         });
         responsList.append(choix);
