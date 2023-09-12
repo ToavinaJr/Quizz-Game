@@ -49,7 +49,7 @@ body {
 }
 
 #pays {
-    color: #cce5f3;
+    color: var(--color-yellow);
     font-size: 32px;
 }
 
@@ -58,9 +58,9 @@ li{
     margin-top: 10px;
     padding: 10px;
     font-size: 24px;
-    background: #5a5aCa;
+    background: var(--color-blue);
     border-radius: 4px;
-    color: #000;
+    color: #fff;
     text-align: center;
     cursor: pointer;
     border: solid 4px transparent;
@@ -78,10 +78,14 @@ li:hover {
 
 #next {
     font-size: 24px;
-    background: #434e44;
+    background: #59645a;
     margin-top: 20px;
     padding: 10px 30px;
     color: #ebe0e0;
     border-radius: 4px;
     cursor: pointer;
+}
+
+#next:hover {
+    background: rgb(26, 190, 11);
 }
